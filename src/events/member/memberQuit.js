@@ -1,7 +1,7 @@
+// Bir kullanıcı sunucuyu terk ettiği zaman belirlenen yazı kanalına bilgilendirme yazısı yazan etkinlik denetleyicisi tasarladım.
 require("colors");
 require("dotenv/config");
 
-// Bir kullanıcı sunucuyu terk ettiği zaman belirlenen yazı kanalına bilgilendirme yazısı yazan etkinlik denetleyicisi tasarladım.
 const { Events } = require("discord.js");
 module.exports = {
   name: Events.GuildMemberRemove,

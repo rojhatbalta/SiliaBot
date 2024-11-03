@@ -1,3 +1,4 @@
+// Yazılan her mesajı kontrol eden ve "!" ile başlayan mesajların sıradan komutlardan biri olup olmadığını kontrol eden etkinlik düzenleyicisi.
 require("colors");
 
 const { Events } = require("discord.js");
@@ -6,14 +7,15 @@ module.exports = {
   name: Events.MessageCreate,
   once: false,
   async execute(message) {
-    // "!" ile başlayan mesajın komut olup olmadığını kontrol ediyor.
+    // Komut kontrolü
     if (!message.content.startsWith("!") || message.author.bot) return;
 
-    // Regular commands check part
+    // Komut isminin mesajdan ayıklanması. ( "!" kısmını ayıklayıp komut ismini taramasından geçiriyor ).
     const args = message.content.slice(1).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const command = message.client.commands.get(commandName);
-    // Eğer komut bulunamazsa çalışmayı engellememek adına geri dönüş sağlıyor.
+
+    // Eğer komut bulunamazsa çalışmayı engellememek için geri dönüş sağlıyor.
     if (!command) return;
 
     try {
@@ -27,7 +29,5 @@ module.exports = {
         ephemeral: true,
       });
     }
-
-    // Seviye sistemi için tecrübe puanları eklenecek (yakında)
   },
 };

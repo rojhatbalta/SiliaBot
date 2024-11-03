@@ -13,6 +13,7 @@ module.exports = {
   async execute(client) {
     //Sunucu bağlantısı sağlandı.
     const guild = client.guilds.cache.get(process.env.GUILD);
+
     //Ön ayarlama için sunucudaki kişiler belleğe yüklendi.
     await guild.members.fetch();
     console.log(
