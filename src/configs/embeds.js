@@ -27,8 +27,36 @@ function permDevEmbed() {
     .setDescription("Bu komut şu anda geliştiriciye özeldir.");
 }
 
+// Yasaklama komutu bilgilendirme mesajı.
+function banEmbed(member, reason, usedBy) {
+  return new EmbedBuilder()
+    .setColor(0x7b120a)
+    .setTitle("**YASAKLANDI**")
+    .setDescription(
+      `**Kullanıcı:** ${member}
+      **ID:** ${member.id}
+      **Sebep:** ${reason}
+      **Yapan:** ${usedBy}
+      **Zaman:** ${new Date().toLocaleString()}`
+    );
+}
+
+// Bağlantı kesme komutu bilgilendirme mesajı.
+function dcMemberEmbed(member, usedBy) {
+  return new EmbedBuilder()
+    .setColor(0x0095b6)
+    .setTitle("**BAĞLANTISI KESİLDİ**")
+    .setDescription(
+      `**Kullanıcı:** ${member}
+      **Yapan:** ${usedBy}
+      **Zaman:** ${new Date().toLocaleString()}`
+    );
+}
+
 module.exports = {
   permModEmbed,
   permAdminEmbed,
   permDevEmbed,
+  banEmbed,
+  dcMemberEmbed,
 };
